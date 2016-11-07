@@ -8,18 +8,17 @@ app.config['DEBUG'] = True
 def generate_json(name):
     return {"name": name, "url": '/view/' + name, "generate_url": '/api/' + name}
 
-graph = list()
-graph.append(generate_json('twitter_combined'))
-graph.append(generate_json('com-amazon.ungraph'))
-graph.append(generate_json('BA10000'))
-
 
 @app.route('/')
 def index():
+    graph = list()
+    graph.append(generate_json('twitter_combined'))
+    graph.append(generate_json('com-amazon.ungraph'))
+    graph.append(generate_json('BA10000'))
     return render_template('index.html',
                            title='Forced-Directed Layout',
                            subtitle='built with flask, NetworkX and D3.js.',
-                           github='https://github.com/3tty0n/graph_sampling',
+                           github='https://github.com/3tty0n/forced-directed-graph',
                            graphs=graph)
 
 
