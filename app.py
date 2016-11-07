@@ -1,3 +1,6 @@
+# coding: utf-8
+
+import os
 from flask import Flask, render_template, url_for, redirect
 from utils.util import create_json_from_file
 
@@ -38,13 +41,14 @@ def generate_graph(filename):
     js_url = url_for('static', filename='forced.js')
     json_url = url_for('static', filename=filename + '.json')
 
-    if filename == 'twitter_combined' or filename == 'com-amazon.ungraph':
-        create_json_from_file(filename, 3000)
-    else:
+    if filename == 'twitter_combined':
         create_json_from_file(filename, 1000)
+    else:
+        create_json_from_file(filename, 3000)
 
     return render_template('forced_graph.html', title=filename, js_url=js_url, graph_name=json_url)
 
 if __name__ == '__main__':
     print('\nGo to http://localhost:5000 to see the example\n')
+    port = int(os.environ.get('PORT', 5000))
     app.run()
