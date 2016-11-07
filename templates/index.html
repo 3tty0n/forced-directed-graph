@@ -12,6 +12,7 @@
             <h1 class="display-3">{{ title }}</h1>
             <p class="lead">{{ subtitle }}</p>
             <a href="{{ github }}" class="btn btn-primary">Source</a>
+            <a href="{{ profile }}" class="btn btn-secondary">Profile</a>
         </div>
     </div>
 {% endblock %}
@@ -22,7 +23,7 @@
 <div id="chart"></div>
 <div class="row">
     {% for graph in graphs %}
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <div class="card">
             <div class="card-block">
                 <h3 class="card-title">{{ graph.name }}</h3>

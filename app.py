@@ -19,6 +19,7 @@ def index():
                            title='Forced-Directed Layout',
                            subtitle='built with flask, NetworkX and D3.js.',
                            github='https://github.com/3tty0n/forced-directed-graph',
+                           profile='https://github.com/3tty0n',
                            graphs=graph)
 
 
@@ -43,7 +44,6 @@ def generate_graph(filename):
         create_json_from_file(filename, 1000)
 
     return render_template('forced_graph.html', title=filename, js_url=js_url, graph_name=json_url)
-
 
 if __name__ == '__main__':
     print('\nGo to http://localhost:5000 to see the example\n')
