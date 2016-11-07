@@ -1,7 +1,5 @@
 # coding=utf-8
 
-from typing import *
-
 import itertools
 import json
 import networkx as nx
@@ -10,7 +8,7 @@ import numpy as np
 import random
 
 
-def random_walk(graph, start_node=None, size=-1, metropolized=False) -> List[int]:
+def random_walk(graph, start_node=None, size=-1, metropolized=False):
     """
     RWでサンプリングしたノード列を返す
 
