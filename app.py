@@ -46,9 +46,10 @@ def generate_graph(filename):
     else:
         create_json_from_file(filename, 3000)
 
-    return render_template('forced_graph.html', title=filename, js_url=js_url, graph_name=json_url)
+    # return render_template('forced_graph.html', title=filename, js_url=js_url, graph_name=json_url)
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     print('\nGo to http://localhost:5000 to see the example\n')
     port = int(os.environ.get('PORT', 5000))
-    app.run()
+    app.run(port=port)
