@@ -50,6 +50,5 @@ def generate_graph(filename):
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    print('\nGo to http://localhost:5000 to see the example\n')
     port = int(os.environ.get('PORT', 5000))
     app.run(port=port)
