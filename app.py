@@ -1,9 +1,7 @@
 # coding: utf-8
 
 import os
-from flask import Flask, render_template, url_for, redirect
-from utils.util import create_json_from_file
-from flask_frozen import Freezer
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -17,6 +15,7 @@ graph = list()
 graph.append(generate_json('twitter_combined'))
 graph.append(generate_json('com-amazon.ungraph'))
 graph.append(generate_json('BA10000'))
+
 
 @app.route('/')
 def index():

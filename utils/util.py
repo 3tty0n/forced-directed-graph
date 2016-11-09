@@ -4,7 +4,6 @@ import itertools
 import json
 import networkx as nx
 from networkx.readwrite import json_graph
-import numpy as np
 import random
 
 
@@ -34,17 +33,47 @@ def random_walk(graph, start_node=None, size=-1, metropolized=False):
         yield v
 
 
-def create_json_from_file(file, size):
+def create_json_from_file_random(filename, size):
     """
-    ファイルを読み込んでjsonを生成する
-    :param file: ファイル名
+    ファイルを読み込んでjsonを生成する。
+    :param filename: ファイル名
+    :param size: サイズ
+    :return:
     """
-    G = nx.read_edgelist('data/' + file + '.txt')
-    edges = list(random_walk(graph=G, size=size, metropolized=False))
-    G1 = nx.Graph()
-    G1.add_path(edges)
-    for n in G1:
-        G1.node[n]['name'] = n
-    d = json_graph.node_link_data(G1)
-    json.dump(d, open('static/' + file + '.json', 'w'))
-    print('Wrote node-link JSON data to static/' + file + '.json')
+    file = open('../data/' + filename + '.txt')
+    lines = file.readlines()
+    file.close()
+    sample = random.sample(lines, size)
+    G = nx.parse_edgelist(sample, nodetype=int)
+    for n in G:
+        G.node[n]['name'] = n
+    d = json_graph.node_link_data(G)
+    json.dump(d, open('../static/' + filename + '.json', 'w'))
+    print('Wrote node-link JSON data to static/' + filename + '.json')
+
+
+def create_json_from_file_random_static(filename, size):
+    """
+    ファイルを読み込んでjsonを生成する。
+    :param filename: ファイル名
+    :param size: サイズ
+    :return:
+    """
+    sample = []
+    count = 0
+    for line in open('../data/' + filename + '.txt').readlines():
+        if count == size:
+            break
+        sample.append(line)
+        count += 1
+    G = nx.parse_edgelist(sample, nodetype=int)
+    for n in G:
+        G.node[n]['name'] = n
+    d = json_graph.node_link_data(G)
+    json.dump(d, open('../view/static/' + filename + '.json', 'w'))
+    print('Wrote node-link JSON data to static/' + filename + '.json')
+
+
+create_json_from_file_random_static('twitter_combined', 5000)
+create_json_from_file_random_static('com-amazon.ungraph', 2000)
+create_json_from_file_random_static('BA10000', 2000)
