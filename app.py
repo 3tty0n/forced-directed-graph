@@ -14,7 +14,7 @@ def generate_json(name):
 @app.route('/')
 def index():
     graph = list()
-    graph.append(generate_json('twitter_combined'))
+    graph.append(generate_json('com-youtube.ungraph'))
     graph.append(generate_json('com-amazon.ungraph'))
     graph.append(generate_json('BA10000'))
     return render_template('index.html',
