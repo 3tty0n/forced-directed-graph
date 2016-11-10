@@ -40,10 +40,13 @@ def create_json_from_file_random(filename, size):
     :param size: サイズ
     :return:
     """
-    file = open('../data/' + filename + '.txt')
-    lines = file.readlines()
-    file.close()
-    sample = random.sample(lines, size)
+    sample = []
+    count = 0
+    for line in open('../data/' + filename + '.txt').readlines():
+        if count == size:
+            break
+        sample.append(line)
+        count += 1
     G = nx.parse_edgelist(sample, nodetype=int)
     for n in G:
         G.node[n]['name'] = n
@@ -52,5 +55,6 @@ def create_json_from_file_random(filename, size):
     print('Wrote node-link JSON data to static/' + filename + '.json')
 
 
-create_json_from_file_random('twitter_combined', 100)
-create_json_from_file_random('BA10000', 5000)
+create_json_from_file_random('BA10000', 1000)
+create_json_from_file_random('com-amazon.ungraph', 1000)
+create_json_from_file_random('com-youtube.ungraph', 1000)
