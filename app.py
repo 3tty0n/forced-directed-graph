@@ -12,7 +12,7 @@ def generate_json(name):
 
 
 graph = list()
-graph.append(generate_json('twitter_combined'))
+graph.append(generate_json('com-youtube.ungraph'))
 graph.append(generate_json('com-amazon.ungraph'))
 graph.append(generate_json('BA10000'))
 

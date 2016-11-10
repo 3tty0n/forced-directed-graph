@@ -70,10 +70,10 @@ def create_json_from_file_random_static(filename, size):
     for n in G:
         G.node[n]['name'] = n
     d = json_graph.node_link_data(G)
-    json.dump(d, open('../view/static/' + filename + '.json', 'w'))
+    json.dump(d, open('../static/' + filename + '.json', 'w'))
     print('Wrote node-link JSON data to static/' + filename + '.json')
 
 
-create_json_from_file_random_static('twitter_combined', 5000)
+create_json_from_file_random_static('com-youtube.ungraph', 2000)
 create_json_from_file_random_static('com-amazon.ungraph', 2000)
 create_json_from_file_random_static('BA10000', 2000)

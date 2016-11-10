@@ -6,9 +6,9 @@ freezer = Freezer(app)
 
 @freezer.register_generator
 def forced_graph():
-    yield '/view/twitter_combined'
-    yield '/view/com-amazon.ungraph.'
-    yield '/view/BA10000'
+    yield '/view/com-youtube.ungraph.html'
+    yield '/view/com-amazon.ungraph.html'
+    yield '/view/BA10000.html'
 
 if __name__ == '__main__':
     freezer.freeze()

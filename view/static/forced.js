@@ -17,7 +17,7 @@ function visualizeGraph(name) {
             .links(json.links)
             .size([w, h])
             .charge(-30)
-            .gravity(0.1)
+            .gravity(0.2)
             .start();
 
         var link = vis.selectAll("line.link")
